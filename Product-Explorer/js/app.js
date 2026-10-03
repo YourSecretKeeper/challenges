@@ -60,3 +60,38 @@ function handleRangeSearch() {
     `${formatPrice(min)} – ${formatPrice(max)}`
   );
 }
+
+
+// ========================================
+// CHALLENGE 2 - POPULAR PRODUCTS
+// ========================================
+
+const topKSelect = document.getElementById("top-k");
+
+const popularProductsContainer =
+    document.getElementById("popular-products-container");
+
+
+function updatePopularProducts() {
+
+    const k = Number(topKSelect.value);
+
+    const popularProducts =
+        getTopPopularProducts(products, k);
+
+    renderPopularProducts(
+        popularProducts,
+        popularProductsContainer
+    );
+}
+
+
+if (topKSelect && popularProductsContainer) {
+
+    topKSelect.addEventListener(
+        "change",
+        updatePopularProducts
+    );
+
+    updatePopularProducts();
+}
